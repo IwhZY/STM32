@@ -3,7 +3,7 @@
 void Timer_Init()
 {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
-	//开启外部时钟
+	//开启外部时钟2.TIM_TIxExternalClockConfig
 	TIM_ETRClockMode1Config(TIM2,TIM_ExtTRGPSC_OFF,TIM_ExtTRGPolarity_NonInverted,0x03);
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
