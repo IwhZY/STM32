@@ -69,7 +69,7 @@ void Serial_SendString(char *String)
 		Serial_SendByte(String[i]);
 	}
 }
-
+//RX（发送数字函数）的子代码
 uint32_t Serial_Pow(uint32_t X, uint32_t Y)
 {
 	uint32_t Result = 1;
@@ -85,7 +85,7 @@ void Serial_SendNumber(uint32_t Number, uint8_t Length)
 	uint8_t i;
 	for (i = 0; i < Length; i ++)
 	{
-		Serial_SendByte(Number / Serial_Pow(10, Length - i - 1) % 10 + '0');
+		Serial_SendByte(Number / Serial_Pow(10, Length - i - 1) % 10 + '0');//0x30或者字符型号0，偏移
 	}
 }
 
@@ -104,7 +104,7 @@ void Serial_Printf(char *format, ...)
 	va_end(arg);
 	Serial_SendString(String);
 }
-//使用中断
+//使用中断时，在主函数main中循环改函数
 uint8_t Serial_GetRxFlag(void)
 {
 	if (Serial_RxFlag == 1)
